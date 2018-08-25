@@ -27,7 +27,7 @@ def xor(payload_1, payload_2, type=None):
             type)
     return ''.join([chr(ord(u) ^ ord(v)) for u, v in zip(payload_1, payload_2)])
 
-# Errors
+# Exceptions
 class TypeNotImplementedError(Exception):
     def __init__(self, value):
         self.value = value

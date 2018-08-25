@@ -7,7 +7,7 @@ Burning 'em, if you ain't quick and nimble
 I go crazy when I hear a cymbal
 """.strip()
 key = 'ICE'
-hex_ciphertext = _string.conv(_cipher.xor_cipher_encrypt(plaintext, key), None, 'hex')
+hex_ciphertext = _string.conv(_cipher.xor_encrypt(plaintext, key), None, 'hex')
 
 expected_hex_ciphertext = """
 0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272
