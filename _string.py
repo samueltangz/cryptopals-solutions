@@ -16,15 +16,7 @@ def conv(payload, from_type=None, to_type=None):
     else:
         raise TypeNotImplementedError(to_type)
 
-def xor(payload_1, payload_2, type=None):
-    if type != None:
-        return conv(
-            xor( 
-                conv(payload_1, type),
-                conv(payload_2, type)
-            ),
-            None,
-            type)
+def xor(payload_1, payload_2):
     return ''.join([chr(ord(u) ^ ord(v)) for u, v in zip(payload_1, payload_2)])
 
 # Exceptions
