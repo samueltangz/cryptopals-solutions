@@ -35,6 +35,15 @@ def pad(plaintext, block_size=16, scheme='PKCS#7'):
     else:
         raise SchemeNotImplementedError(scheme)
 
+def unpad(plaintext, block_size=16, scheme='PKCS#7'):
+    if scheme == 'PKCS#7':
+        pad = ord(plaintext[-1])
+        if pad == 0 or plaintext[-pad:] != pad * chr(pad):
+            raise PaddingInvalidError(plaintext)
+        return plaintext[:-pad]
+    else:
+        raise SchemeNotImplementedError(scheme)
+
 # Exceptions
 class ModeNotImplementedError(Exception):
     def __init__(self, value):
@@ -43,6 +52,12 @@ class ModeNotImplementedError(Exception):
         return repr(self.value)
 
 class SchemeNotImplementedError(Exception):
+    def __init__(self, value):
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
+
+class PaddingInvalidError(Exception):
     def __init__(self, value):
         self.value = value
     def __str__(self):

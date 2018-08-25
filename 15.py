@@ -13,4 +13,3 @@ try:
   assert False, 'Should throw exception'
 except _cipher.PaddingInvalidError:
   pass
-  
